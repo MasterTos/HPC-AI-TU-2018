@@ -70,6 +70,12 @@ RUN cd caffe2 && mkdir build && cd build \
 
 ENV PYTHONPATH /usr/local
 
+# Create the fs-repo directory and switch to a non-privileged user.
+ENV TS_PATH /data
+RUN mkdir -p $IPFS_PATH \
+  && adduser -D -h $TS_PATH -u 1000 -G users tensorflow \
+  && chown tensorflow:users $TS_PATH
+
 # RUN ln -s -f /usr/bin/python3 /usr/bin/python#
 
 # Set up our notebook config.
