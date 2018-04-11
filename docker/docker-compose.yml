@@ -1,0 +1,9 @@
+version: '2.1'
+
+services:
+  hpc-ai-tu-2018:
+    image: hpc-ai-tu-2018
+    build: .
+    ports:
+      - 8888:8888
+      - 6006:6006
