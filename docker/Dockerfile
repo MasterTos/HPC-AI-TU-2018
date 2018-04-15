@@ -72,7 +72,7 @@ ENV PYTHONPATH /usr/local
 
 # Create the fs-repo directory and switch to a non-privileged user.
 ENV TS_PATH /data
-RUN mkdir -p $IPFS_PATH \
+RUN mkdir -p $TS_PATH \
   && adduser -D -h $TS_PATH -u 1000 -G users tensorflow \
   && chown tensorflow:users $TS_PATH
 
