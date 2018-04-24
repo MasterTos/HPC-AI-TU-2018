@@ -49,7 +49,7 @@ RUN pip --no-cache-dir install \
 
 # Install TensorFlow CPU version from central repo
 RUN pip --no-cache-dir install \
-    http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.0.0-cp27-none-linux_x86_64.whl
+    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.7.0-cp27-none-linux_x86_64.whl
 # --- ~ DO NOT EDIT OR DELETE BETWEEN THE LINES --- #
 
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
@@ -69,6 +69,12 @@ RUN cd caffe2 && mkdir build && cd build \
     && rm -rf build
 
 ENV PYTHONPATH /usr/local
+
+# Create the fs-repo directory and switch to a non-privileged user.
+#ENV TS_PATH /data
+#RUN mkdir -p $TS_PATH \
+#  && adduser -D -h $TS_PATH -u 1000 -G users tensorflow \
+#  && chown tensorflow:users $TS_PATH
 
 # RUN ln -s -f /usr/bin/python3 /usr/bin/python#
 
